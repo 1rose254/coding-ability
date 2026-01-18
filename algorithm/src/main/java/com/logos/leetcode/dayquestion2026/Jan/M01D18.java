@@ -1,4 +1,4 @@
-package com.logos.leetcode.dayQuestion2026.Jan;
+package com.logos.leetcode.dayquestion2026.Jan;
 
 /**
  * @author logos
