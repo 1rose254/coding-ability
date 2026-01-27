@@ -10,7 +10,7 @@ import java.util.List;
  * @version v1.0
  * @Package com.logos.leetcode.dayquestion2026.Jan
  */
-public class Ｍ01D26 {
+public class M01D26 {
 
     /**
      * 1200. 最小绝对差
