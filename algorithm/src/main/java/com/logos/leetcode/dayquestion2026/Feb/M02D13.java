@@ -23,8 +23,8 @@ public class M02D13 {
             int ans = 0;
             for (int i = 0; i < n; ) {
                 int start = i;
-                for (i++; i < n && s[i] == s[i - 1]; i++)
-                    ;
+                for (i++; i < n && s[i] == s[i - 1]; i++) {
+                }
                 ans = Math.max(ans, i - start);
             }
             ans = Math.max(ans, f(s, 'a', 'b'));
