@@ -29,8 +29,9 @@ public class M02D15 {
                 sb.append(carry % 2);
                 carry /= 2;
             }
-            if (carry > 0)
+            if (carry > 0){
                 sb.append('1');
+            }
             return sb.reverse().toString();
         }
     }
