@@ -12,6 +12,10 @@ import java.util.PriorityQueue;
  */
 public class Q13 {
 
+    /**
+     * 23.合并K个升序链表
+     */
+
     class Solution {
         public ListNode mergeKLists(ListNode[] lists) {
             int k = lists.length;
