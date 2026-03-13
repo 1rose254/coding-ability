@@ -17,18 +17,32 @@ public class M04D13 {
 
     class Solution {
         public long minNumberOfSeconds(int mountainHeight, int[] workerTimes) {
-            long seconds = 0;
-            PriorityQueue<long[]> pq = new PriorityQueue<long[]>((a, b) -> Long.compare(a[0] + a[1], b[0] + b[1]));
-            for (int workerTime : workerTimes) {
-                pq.offer(new long[] { 0, workerTime, workerTime });
+            int maxT = 0;
+            for (int t : workerTimes) {
+                maxT = Math.max(maxT, t);
             }
-            for (int i = 1; i <= mountainHeight; i++) {
-                long[] arr = pq.poll();
-                long totalTime = arr[0], nextTime = arr[1], originalTime = arr[2];
-                seconds = totalTime + nextTime;
-                pq.offer(new long[] { totalTime + nextTime, nextTime + originalTime, originalTime });
+            int h = (mountainHeight - 1) / workerTimes.length + 1;
+            long left = 0;
+            long right = (long) maxT * h * (h + 1) / 2;
+            while (left + 1 < right) {
+                long mid = (left + right) / 2;
+                if (check(mid, mountainHeight, workerTimes)) {
+                    right = mid;
+                } else {
+                    left = mid;
+                }
             }
-            return seconds;
+            return right;
+        }
+
+        private boolean check(long m, int leftH, int[] workerTimes) {
+            for (int t : workerTimes) {
+                leftH -= ((int) Math.sqrt(m / t * 8 + 1) - 1) / 2;
+                if (leftH <= 0) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 
