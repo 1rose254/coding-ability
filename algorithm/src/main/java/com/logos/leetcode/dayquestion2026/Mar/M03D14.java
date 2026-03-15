@@ -6,7 +6,7 @@ package com.logos.leetcode.dayquestion2026.Mar;
  * @version v1.0
  * @Package com.logos.leetcode.dayquestion2026.Mar
  */
-public class M05D14 {
+public class M03D14 {
 
     /**
      * 1415. 长度为 n 的开心字符串中字典序第 k 小的字符串
