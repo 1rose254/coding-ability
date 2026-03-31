@@ -1,0 +1,70 @@
+package com.logos.leetcode.dayquestion2026.Mar;
+
+import java.util.Arrays;
+
+/**
+ * @author logos
+ * date 2026/3/31 9:58
+ * @version v1.0
+ * @Package com.logos.leetcode.dayquestion2026.Mar
+ */
+public class M03D31 {
+
+    /**
+     * 3474. 字典序最小的生成字符串
+     * <a href="https://leetcode.cn/problems/lexicographically-smallest-generated-string/description/"/>
+     */
+
+    class Solution {
+        public String generateString(String S, String t) {
+            char[] s = S.toCharArray();
+            int n = s.length;
+            int m = t.length();
+            char[] ans = new char[n + m - 1];
+            Arrays.fill(ans, '?');
+
+            for (int i = 0; i < n; i++) {
+                if (s[i] != 'T') {
+                    continue;
+                }
+                for (int j = 0; j < m; j++) {
+                    char v = ans[i + j];
+                    if (v != '?' && v != t.charAt(j)) {
+                        return "";
+                    }
+                    ans[i + j] = t.charAt(j);
+                }
+            }
+
+            char[] oldAns = ans.clone();
+            for (int i = 0; i < ans.length; i++) {
+                if (ans[i] == '?') {
+                    ans[i] = 'a';
+                }
+            }
+
+            for (int i = 0; i < n; i++) {
+                if (s[i] != 'F') {
+                    continue;
+                }
+                if (!new String(ans, i, m).equals(t)) {
+                    continue;
+                }
+                boolean ok = false;
+                for (int j = i + m - 1; j >= i; j--) {
+                    if (oldAns[j] == '?') {
+                        ans[j] = 'b';
+                        ok = true;
+                        break;
+                    }
+                }
+                if (!ok) {
+                    return "";
+                }
+            }
+
+            return new String(ans);
+        }
+    }
+
+}
