@@ -8,7 +8,7 @@ import java.util.*;
  * @version v1.0
  * @Package com.logos.leetcode.dayquestion2026.Apr
  */
-public class M05D16 {
+public class M04D16 {
 
     /**
      * 3488. 距离最小相等元素查询
