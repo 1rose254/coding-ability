@@ -7,7 +7,6 @@ package com.logos.leetcode.dayquestion2026.Jun;
  * @Package com.logos.leetcode.dayquestion2026.Jun
  */
 public class M06D16 {
-
     /**
      * 3612. 用特殊操作处理字符串 I
      * <a href="https://leetcode.cn/problems/process-string-with-special-operations-i/description/"/>
