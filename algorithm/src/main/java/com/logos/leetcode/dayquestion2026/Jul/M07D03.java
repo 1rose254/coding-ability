@@ -21,7 +21,7 @@ public class M07D03 {
         public int findMaxPathScore(int[][] edges, boolean[] online, long k) {
             int n = online.length;
             List<int[]>[] g = new ArrayList[n];
-            Arrays.setAll(g, _ -> new ArrayList<>());
+            Arrays.setAll(g, i -> new ArrayList<>());
             int maxWt = -1;
             for (int[] e : edges) {
                 int x = e[0], y = e[1], wt = e[2];
