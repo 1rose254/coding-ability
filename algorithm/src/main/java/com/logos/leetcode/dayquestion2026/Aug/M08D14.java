@@ -6,7 +6,7 @@ package com.logos.leetcode.dayquestion2026.Aug;
  * @version v1.0
  * @Package com.logos.leetcode.dayquestion2026.Aug
  */
-public class M0814 {
+public class M08D14 {
 
     /**
      * 3090. 每个字符最多出现两次的最长子字符串
