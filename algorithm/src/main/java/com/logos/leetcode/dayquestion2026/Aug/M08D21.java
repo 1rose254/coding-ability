@@ -1,7 +1,5 @@
 package com.logos.leetcode.dayquestion2026.Aug;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author logos
@@ -12,29 +10,58 @@ import java.util.List;
 public class M08D21 {
 
     /**
-     * 3069. 将元素分配到两个数组中 I
-     * <a href="https://leetcode.cn/problems/distribute-elements-into-two-arrays-i/description/"/>
+     * 3116. 单面值组合的第 K 小金额
+     * <a href="https://leetcode.cn/problems/kth-smallest-amount-with-single-denomination-combination/description/"/>
      */
 
     class Solution {
-        public int[] resultArray(int[] nums) {
-            int n = nums.length;
-            List<Integer> a = new ArrayList<>();
-            List<Integer> b = new ArrayList<>();
-            a.add(nums[0]);
-            b.add(nums[1]);
-            for (int i = 2; i < n; i++) {
-                if (a.get(a.size() - 1) > b.get(b.size() - 1)) {
-                    a.add(nums[i]);
+        public long findKthSmallest(int[] coins, int k) {
+            int mn = Integer.MAX_VALUE;
+            for (int x : coins) {
+                mn = Math.min(mn, x);
+            }
+            long left = k - 1;
+            long right = (long) mn * k;
+            while (left + 1 < right) {
+                long mid = left + (right - left) / 2;
+                if (check(mid, coins, k)) {
+                    right = mid;
                 } else {
-                    b.add(nums[i]);
+                    left = mid;
                 }
             }
-            a.addAll(b);
-            for (int i = 0; i < n; i++) {
-                nums[i] = a.get(i);
+            return right;
+        }
+
+        private boolean check(long m, int[] coins, int k) {
+            long cnt = 0;
+            next:
+            for (int i = 1; i < (1 << coins.length); i++) {
+                long lcmRes = 1;
+                for (int j = 0; j < coins.length; j++) {
+                    if ((i >> j & 1) == 1) {
+                        lcmRes = lcm(lcmRes, coins[j]);
+                        if (lcmRes > m) {
+                            continue next;
+                        }
+                    }
+                }
+                cnt += Integer.bitCount(i) % 2 == 1 ? m / lcmRes : -m / lcmRes;
             }
-            return nums;
+            return cnt >= k;
+        }
+
+        private long gcd(long a, long b) {
+            while (a != 0) {
+                long tmp = a;
+                a = b % a;
+                b = tmp;
+            }
+            return b;
+        }
+
+        private long lcm(long a, long b) {
+            return a / gcd(a, b) * b;
         }
     }
 
